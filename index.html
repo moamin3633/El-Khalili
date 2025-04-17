@@ -1,0 +1,33 @@
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-start p-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <header className="w-full flex justify-between items-center py-4 border-b border-gray-300 dark:border-gray-700">
+        <h1 className="text-2xl font-bold">سوق الخليلي</h1>
+        <Image src="/logo.png" alt="لوجو سوق الخليلي" width={50} height={50} />
+      </header>
+
+      <section className="mt-8 w-full max-w-4xl">
+        <h2 className="text-xl font-semibold mb-4">اختر نوع المنتجات</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
+            <h3 className="text-lg font-bold">المنتجات الرقمية</h3>
+            <p className="text-sm mt-2">برامج، كورسات، كتب إلكترونية وغيرها.</p>
+          </div>
+
+          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition cursor-pointer">
+            <h3 className="text-lg font-bold">المنتجات التجارية</h
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">إلكترونيات وهواتف</div>
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">ملابس رجالي ونسائي</div>
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">مستلزمات البيت والمطبخ</div>
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">الصحة والعناية الشخصية</div>
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">رياضة ولياقة بدنية</div>
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">مستلزمات الأطفال والرضّع</div>
+          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">أجهزة كهربائية منزلية</div>
+        </div>
+      </section>
+    </main>
+  );
+}

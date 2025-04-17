@@ -1,0 +1,60 @@
+// script.js
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDI24PWSJRntawl4L8c0OM4XA3k3ACHVsc",
+    authDomain: "m-a-store-fab0c.firebaseapp.com",
+    projectId: "m-a-store-fab0c",
+    storageBucket: "m-a-store-fab0c.firebasestorage.app",
+    messagingSenderId: "303751059981",
+    appId: "1:303751059981:web:db0861d297890e3cda5344",
+    measurementId: "G-0SYRYJW4SV"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Get elements
+const productList = document.getElementById('product-list');
+const addProductForm = document.getElementById('add-product-form');
+
+// Add product to Firestore
+addProductForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const productName = document.getElementById('product-name').value;
+    const productPrice = document.getElementById('product-price').value;
+
+    db.collection('products').add({
+        name: productName,
+        price: productPrice
+    })
+    .then(() => {
+        alert('تم إضافة المنتج بنجاح');
+        loadProducts();  // Reload products
+    })
+    .catch((error) => {
+        alert('حدث خطأ: ' + error.message);
+    });
+});
+
+// Load products from Firestore
+function loadProducts() {
+    db.collection('products').get().then((querySnapshot) => {
+        productList.innerHTML = '';  // Clear current list
+        querySnapshot.forEach((doc) => {
+            const product = doc.data();
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+            productDiv.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>السعر: ${product.price} ج.م</p>
+            `;
+            productList.appendChild(productDiv);
+        });
+    });
+}
+
+// Load products on page load
+loadProducts();
